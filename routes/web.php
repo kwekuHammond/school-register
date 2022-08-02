@@ -37,7 +37,7 @@ Route::get('/student-list', [StudentController::class, 'Student_list_View'])->mi
 Route::delete('/student-list/{id}', [StudentController::class, 'DeleteStudent']);
 
 //Update Button Route
-Route::get('/update/{student}', [StudentController::class, 'AddNewStudentView']);
+Route::get('/update/{student}', [StudentController::class, 'AddNewStudentView'])->middleware('auth');
 
 //Add New Student Page
 Route::get('/add-new-student', function(){

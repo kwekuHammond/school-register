@@ -58,8 +58,8 @@ class student extends Controller
 
     public function AddNewStudentView(StudentData $student)
     {
-        if(!auth()->check())
-            return redirect('/');
+        // if(!auth()->check())
+        //     return redirect('/');
 
         return view('add-new-student')->with(['user_name'=> Auth::user()->fullname, 'student'=>$student]);
     }
