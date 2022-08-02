@@ -13,17 +13,12 @@ class student extends Controller
 {
     //Checks if user is logged in & Returns Student-List View
     public function Student_list_View(){
-        if(Auth::check())
-        {
+
             Paginator::useBootstrap();
             return view('/student-list')->with([
                 'user_name'=> Auth::user()->fullname,
                 'StudentList'=>StudentData::latest()->paginate(5)
             ]);
-        }
-        else{
-            return redirect('/');
-        }
     }
 
     public function AddNewStudent(Request $request){

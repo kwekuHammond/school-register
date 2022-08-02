@@ -18,7 +18,8 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('login');
+
 Route::post('/', [index_controller::class, 'login']);
 
 Route::get('/create-account', function(){
@@ -30,7 +31,7 @@ Route::post('/create-account', [index_controller::class, 'create_account']);
 Route::POST('/student-list', [StudentController::class, 'search_student']);
 
 //Route to main page (Students list view)
-Route::get('/student-list', [StudentController::class, 'Student_list_View']);
+Route::get('/student-list', [StudentController::class, 'Student_list_View'])->middleware('auth');
 
 //Delete Student Record
 Route::delete('/student-list/{id}', [StudentController::class, 'DeleteStudent']);
