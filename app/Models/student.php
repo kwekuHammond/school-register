@@ -18,4 +18,9 @@ class student extends Model
         'religion', 'profile_image'
     ];
 
+        //Relationship to users
+        // public function users(){
+        //     return $this->belongsTo(users::class, 'users_id');
+        // }
+
 }

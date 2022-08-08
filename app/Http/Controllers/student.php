@@ -34,10 +34,14 @@ class student extends Controller
                 'religion'=>'required'
             ]);
 
+            //$FormFields['users_id'] = Auth::user()->id;
+
             if($request->hasFile('profile_image'))
             {
                 $FormFields['profile_image'] = $request->file('profile_image')->store('profile_images', 'public');
             }
+
+            //dd($FormFields);
 
             StudentData::create($FormFields);
             return redirect('/add-new-student')->with('message', 'New Student Added Successfully!');
@@ -85,9 +89,10 @@ class student extends Controller
         {
             $FormFields['profile_image'] = $request->file('profile_image')->store('profile_images', 'public');
         }
-            $student = StudentData::find($FormFields['id']);
-            $student->update($FormFields);
-            return back()->with('message', 'Student Data Updated Successfully!');
+
+        $student = StudentData::find($FormFields['id']);
+        $student->update($FormFields);
+        return back()->with('message', 'Student Data Updated Successfully!');
     }
 
     public function search_student(Request $request)
